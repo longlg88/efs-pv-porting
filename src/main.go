@@ -49,15 +49,13 @@ func main() {
 		fmt.Printf("There are %d PVs in the cluster\n", len(pvs.Items))
 		fmt.Printf("The list is ---\n")
 		for i, pv := range pvs.Items {
-			fmt.Printf("[%d] %s\n", i+1, pv.GetName())
+			fmt.Printf("[%d] %s\n\n", i+1, pv.GetName())
 			p := pv.GetName()
 			val, err := clientset.CoreV1().PersistentVolumes().Get(p, metav1.GetOptions{})
 			if err != nil {
 				panic(err.Error())
 			}
-			fmt.Printf("\n")
-			fmt.Printf("\n")
-			fmt.Printf("Find PV %s", val)
+			fmt.Printf("Find PV %s\n", val)
 		}
 
 		/*
