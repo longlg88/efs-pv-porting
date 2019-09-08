@@ -49,8 +49,11 @@ func main() {
 		fmt.Printf("There are %d PVs in the cluster\n", len(pvs.Items))
 		fmt.Printf("The list is ---\n")
 		for i, pv := range pvs.Items {
-			fmt.Printf("[%d] %s\n", i, pv.GetName())
+			fmt.Printf("[%d] %s\n", i+1, pv.GetName())
 		}
+
+		f, err = clientset.CoreV1().PersistentVolumes().Get(pv.GetName(),metav1.GetOptions{})
+		fmt.Printf("Find PV %s", f)
 
 		/*
 			pods, err := clientset.CoreV1().Pods("").List(metav1.ListOptions{})
