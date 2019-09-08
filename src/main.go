@@ -42,7 +42,7 @@ func main() {
 		panic(err.Error())
 	}
 	for {
-		pvs, err := clientset.CoreV1().PersistentVolumes("").List(metav1.ListOptions{})
+		pvs, err := clientset.CoreV1().PersistentVolumes().List(metav1.ListOptions{})
 		if err != nil {
 			panic(err.Error())
 		}
