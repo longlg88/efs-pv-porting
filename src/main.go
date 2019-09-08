@@ -55,7 +55,7 @@ func main() {
 			if err != nil {
 				panic(err.Error())
 			}
-			fmt.Printf("Find PV %s\n", val)
+			fmt.Printf("Find PV %s\n", val.GetName())
 		}
 
 		/*
