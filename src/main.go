@@ -47,6 +47,8 @@ func main() {
 			panic(err.Error())
 		}
 		fmt.Printf("There are %d PVs in the cluster\n", len(pvs.Items))
+		fmt.Printf("The list is ---\n")
+		fmt.Printf("|" + pvs.Items + "|")
 
 		/*
 			pods, err := clientset.CoreV1().Pods("").List(metav1.ListOptions{})
