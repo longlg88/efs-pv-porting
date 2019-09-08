@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
@@ -48,16 +49,8 @@ func main() {
 		}
 		fmt.Printf("There are %d PVs in the cluster\n", len(pvs.Items))
 		fmt.Printf("The list is ---\n")
-		for i, pv := range pvs.Items {
-			fmt.Printf("[%d] %s\n\n", i+1, pv.GetName())
-			p := pv.GetName()
-			val, err := clientset.CoreV1().PersistentVolumes().Get(p, metav1.GetOptions{})
-			if err != nil {
-				panic(err.Error())
-			}
-			fmt.Printf("Find PV %s\n", val.GetName())
-		}
-
+		pv := &v1.PersistentVolumes{}
+		fmt.Printf(pv)
 		/*
 			pods, err := clientset.CoreV1().Pods("").List(metav1.ListOptions{})
 			if err != nil {
