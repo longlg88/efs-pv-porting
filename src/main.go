@@ -50,10 +50,11 @@ func main() {
 		fmt.Printf("The list is ---\n")
 		for i, pv := range pvs.Items {
 			fmt.Printf("[%d] %s\n", i+1, pv.GetName())
+			pv_name=pv.GetName()
 		}
 
-		f, err = clientset.CoreV1().PersistentVolumes().Get(pv.GetName(),metav1.GetOptions{})
-		fmt.Printf("Find PV %s", f)
+		val, err := clientset.CoreV1().PersistentVolumes().Get(pv_name.GetName(),metav1.GetOptions{})
+		fmt.Printf("Find PV %s", val.Items)
 
 		/*
 			pods, err := clientset.CoreV1().Pods("").List(metav1.ListOptions{})
